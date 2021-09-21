@@ -7,7 +7,7 @@
       // All config options at https://respec.org/docs/
       var respecConfig = {
         // Working Groups ids at https://respec.org/w3c/groups/
-        // group: "ICAO IMP Working Group A",
+        // group: "ICAO APAC SWIM Task Force",
 
         specStatus: "base",
         editors: [{
@@ -36,19 +36,26 @@
               },
         ],
         localBiblio: {
-                  "AIMV4": {
-                      title: "AIM Manual Volume 4 - Digital Datasets",
+                  "PANS-IM": {
+                      title: "ICAO PANS Information Management",
                       publisher: "ICAO",
                       status: "Draft",
                       date: "2021",
                       href: "TBA"
                   },
-              "GEOCAT2": {
-                      title: "GeoDCAT Application Profile",
-                      publisher: "European Commission Joint Research Centre",
-                      status: "Recommendation",
-                      date: "23 December 2020",
-                      href: "https://semiceu.github.io/GeoDCAT-AP/releases/2.0.0/"
+              "SWIM5-WP14": {
+                      title: "Comparison of Information Service Overviews and Proposed APAC Version",
+                      publisher: "ICAO APAC SWIM Task Force",
+                      status: "Working Paper",
+                      date: "9 August 2021",
+                      href: "https://www.icao.int/APAC/Meetings/2021%20SWIM%20TF%205/WP14_AUS%20and%20HKG%20AI.6%20-%20Comparison%20of%20Services%20Overview%20Revised.pdf"
+                  },
+              "DCAT-PROFILE": {
+                      title: "W3C DCAT Profile for ICAO Aeronautical Datasets",
+                      publisher: "ICAO Information Management Panel AIM Working Group",
+                      status: "Draft",
+                      date: "9 July 2021",
+                      href: "https://airservicesaustralia.github.io/dcat-profile/"
                   }
                 },
       };
@@ -59,7 +66,7 @@
     <h1 id="title">APAC SWIM Service Overview Extensions</h1>
     <section id='abstract'>
       <p>
-        This specification defines...
+        This specification defines a set of additional properties that may be used to augment the current set of properties defined in ICAO [[PANS-IM]] for describing SWIM Service Overviews in the APAC region.
         </p>
   
 
@@ -68,24 +75,154 @@
     <h2>Status of this document</h2>
     <p>The current version is DRAFT. Feedback and comments welcome via the Github Issue feature. </p>
     
-      <p>This specification is governed by the ICAO APAC SWIM Task Force.</p>
+      <p>This specification is governed by the <a href="https://www.icao.int/APAC/Pages/swim.aspx">ICAO APAC SWIM Task Force</a>.</p>
 
     <p class="note">
-      This is a DRAFT specification. Consensus is sought from the Aviation community on the set of properties specified in this Profile for relevance to business scenarios. Additional feedback is requested where definitions are created and/or interpreted by this Profile.
+      This is a DRAFT specification. Consensus is sought from the APAC aviation community on the additional set of properties specified in this document for relevance to business scenarios.
+    </p>
+
+    <p class="issue">
+      Some <a href="https://github.com/icao-apac/service-overview/issues">current issues</a> related to additional new properties are still to be discussed and resolved. 
     </p>
 
    </section>
 
     <section id='conformance' class="override">
       <h2>Conformance</h2>
-      <p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this Profile are non-normative.
-        Everything else in this Profile is normative.</p>
+      <p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this document are non-normative.
+        Everything else in this document is normative.</p>
 
       <p>The key words MAY, MUST, MUST NOT, RECOMMENDED, SHOULD, and SHOULD NOT are to be interpreted as described in [[!RFC2119]].
-
+      </section>
       
+<section class="informative">
+  <h2>Introduction</h2>
+                <p>The ICAO APAC SWIM Task Force has endorsed the proposal at the 5th Meeting to adopt a set of additional properties for describing SWIM Service Overviews. These are aimed at extending the set of properties defined in ICAO [[PANS-IM]].    
+                </p>
+                <p>For a detailed comparison of the properties used in Service Overviews and SWIM Registries, and the original proposal from SWIM T/F5, see  [[SWIM5-WP14]].</p>
+</section>
+
+<section>
+  <h2>ICAO PANS-IM Service Overview Properties</h2>
+  <p>The ICAO [[!PANS-IM]] specification defines a set of properties to describe SWIM Service Overviews. This set is required to aid the discoverability of SWIM Information Services and consistent descriptions for Registry interoperability. </p>
+  <p>The set of Service Overview properties include:</p>
+  <div class="advisement">
+  <ul>
+    <li>Information Service Name</li>
+    <li>Information Service Version</li>
+    <li>Information Service Lifecycle - Status</li>
+    <li>Information Service Lifecycle - Date</li>
+    <li>Information Service Functions</li>
+    <li>Information Category</li>
+    <li>Brief Description of the Information Service</li>
+    <li>Additional Information on the Information Service</li>
+    <li>Quality of the Service</li>
+    <li>Information Service Validation - Type</li>
+    <li>Information Service Validation - Description</li>
+    <li>Filtering Available</li>
+    <li>Access Restrictions</li>
+    <li>Message Exchange Patterns</li>
+    <li>Information Exchange Models</li>
+    <li>Geographical Extent of Information</li>
+    <li>Source of Information</li>
+    <li>Provider Organisation</li>
+    <li>Support Availability</li>
+    <li>Provider Point of Contact</li>
+  </ul>
+</div>
+<p>See the ICAO [[!PANS-IM]] specification for a complete definition and usage guide of these properties.</p>
+</section>
+
+<section>
+  <h2>Additional APAC Properties</h2>
+  <p>The additional properties are categorised under:</p>
+  <ul>
+    <li>Identification,</li>
+    <li>Discovery, and</li>
+    <li>Technical.</li>
+  </ul>
+
+  <section>
+    <h2>Identification Properties</h2>
+    <p>To support global interoperability of Service Overviews across SWIM Registries, there is requirement for each to be uniquely identified.  This field would be a web Uniform Resource Identifier (URI).</p>
+    <div class="advisement">
+      <p>
+        <i>Property: </i><b>Information Service Identifier</b></br>
+        <i>Definition: </i>The globally unique identifier for the Service Overview</br>
+        <i>Notes: </i>The identifier must be a [[!URI]].
+      </p>
+  </div>
+
+  </section>
+
+  <section>
+    <h2>Discovery Properties</h2>
+    <p>A key purpose for additional properties for APAC standardisation should be considered in the context of discovery of information services. That is, the information consumer’s need to find services should be the driving requirement. This requirement covers the three Service Overview properties; “Information Category”, “Information Service Functions”, and “Geographical Extend of Information”. </p>
+      <p>These three properties are free text, and hence, would not provide the capability of a service provider to define explicit structured values (in the form of URI-based vocabualary terms) to enable service consumers to find specific services.</p>
+    <div class="advisement">
+      <p>
+        <i>Property: </i><b>Information Theme</b></br>
+        <i>Definition: </i>The primary subject theme of the Service Overview</br>
+        <i>Notes: </i>The value must be a vocabulary term expressed as a [[!URI]].
+      </p>
+  </div>
+  <div class="advisement">
+    <p>
+      <i>Property: </i><b>Functional Theme</b></br>
+      <i>Definition: </i>The primary business function theme of the Service Overview</br>
+      <i>Notes: </i>The value must be a vocabulary term expressed as a [[!URI]].
+    </p>
+    </div>
+    <p>
+To support more advanced Geospatial discovery, three new properties are defined. These properties are reused from the W3C DCAT Profile for ICAO Aeronautical Datasets [[!DCAT-PROFILE]]. This ensures consistency and compatibility with related data standardisation efforts.
+    </p>
+    <div class="advisement">
+      <p>
+        <i>Property: </i><b>Spatial State</b></br>
+        <i>Definition: </i>An internationally recognised geographic entity that provides aeronautical information service</br>
+        <i>Notes: </i>The value must conform to [[!DCAT-PROFILE]].
+      </p>
+      </div>
+      <div class="advisement">
+        <p>
+          <i>Property: </i><b>Spatial Aerodrome</b></br>
+          <i>Definition: </i>A defined area on land or water intended to be used either wholly or in part for the arrival, departure and surface movement of aircraft</br>
+          <i>Notes: </i>The value must conform to [[!DCAT-PROFILE]].
+        </p>
+        </div>
+        <div class="advisement">
+          <p>
+            <i>Property: </i><b>Spatial Airspace</b></br>
+            <i>Definition: </i>A defined three dimensional region of space relevant to air traffic</br>
+            <i>Notes: </i>The value must conform to [[!DCAT-PROFILE]].
+          </p>
+          </div>
+</div>
 
 
 
+
+  </section>
+
+  <section>
+    <h2>Technical Properties</h2>
+
+    <p>
+      To expand on the more technical descriptive properties, a new property is added to cover the various interface bindings for the SWIM Information Service.
+    </p>
+
+    <div class="advisement">
+      <p>
+        <i>Property: </i><b>Interface Binding</b></br>
+        <i>Definition: </i>A description of an interface binding (including protocols, messages, endpoints, and operations) that enables information services to exchange data with consuming applications</br>
+        <i>Notes: </i>The value is free text .
+      </p>
+      </div>
+
+
+  </section>
+
+
+</section>
   </body>
 </html>
